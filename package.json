@@ -1,0 +1,19 @@
+{
+  "name": "swcrypts-vite",
+  "module": "src/index.ts",
+  "type": "module",
+  "keywords": [
+    "swcrypts",
+    "vite-plugin"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest",
+    "vite": "^8.0.13"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@swcrypts/core": "^0.0.3"
+  }
+}
