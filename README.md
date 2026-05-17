@@ -1,12 +1,14 @@
 # swcrypts-vite
 
-Encrypt static sites with a vite plugin.
-
-Based on the [swcrypts cli](https://github.com/lafkpages/swcrypts)
+A Vite plugin to encrypt static sites, based on [swcrypts](https://github.com/lafkpages/swcrypts)
 
 ## How it works
 
-swcrypts-vite will encrypt your vite builds and add a password prompt.
+`@swcrypts/vite` hooks into Vite's build process to encrypt your bundled assets (HTML, JS, CSS, images, etc.) before they are saved to your output folder.
+
+A password prompt will be added to your html files as well, to decrypt the assets when the correct password is entered.
+
+HTTPS is required, so encryption and decryption works safely.
 
 ## Installation
 
