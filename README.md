@@ -32,7 +32,7 @@ export default defineConfig({
 });
 ```
 
-**You should add the plugin so it's last, to prevent other plugins from interfering with the encryption process.**
+**You should add the plugin at the end so it's last, to prevent other plugins from interfering with the encryption process.**
 
 ## Configuration
 
