@@ -7,7 +7,8 @@
     "declaration": true,
     "outDir": "./dist",
     "module": "ESNext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "emitDeclarationOnly": true
   },
   "include": ["src"]
 }
