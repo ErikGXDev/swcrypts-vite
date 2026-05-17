@@ -11,7 +11,7 @@ interface SWPluginOptions {
   salt?: string;
 }
 
-export async function swcrypts(config: SWPluginOptions): Promise<Plugin> {
+export function swcrypts(config: SWPluginOptions): Plugin {
   // Polyfill toBase64 for Bun/older Node
   if (typeof (Uint8Array.prototype as any).toBase64 !== "function") {
     (Uint8Array.prototype as any).toBase64 = function () {
@@ -33,8 +33,6 @@ export async function swcrypts(config: SWPluginOptions): Promise<Plugin> {
     );
   }
 
-  const passwordHash = await hashPassword(config.password, config.salt);
-
   let resolvedViteConfig: ResolvedConfig;
 
   return {
@@ -55,9 +53,15 @@ export async function swcrypts(config: SWPluginOptions): Promise<Plugin> {
     },
 
     async generateBundle(_options, bundle) {
+      if (!config.salt) {
+        throw new Error("Salt generation failed. Please provide a valid salt.");
+      }
+
       const assets: string[] = [];
 
       const filteredBundle = filterIgnoredFiles(Object.keys(bundle));
+
+      const passwordHash = await hashPassword(config.password, config.salt);
 
       // Encrypt each file in the bundle
       for (const fileName of filteredBundle) {
