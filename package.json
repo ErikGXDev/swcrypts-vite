@@ -1,17 +1,37 @@
 {
   "name": "swcrypts-vite",
+  "version": "0.0.3",
+  "description": "A Vite plugin for encrypting and password-protecting assets",
   "module": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir ./dist --format esm --target node && tsc --emitDeclarationOnly -p tsconfig.build.json",
+    "prepublishOnly": "bun run build"
+  },
   "keywords": [
     "swcrypts",
     "vite-plugin"
   ],
+  "author": "ErikGXDev",
+  "license": "MIT",
   "devDependencies": {
     "@types/bun": "latest",
-    "vite": "^8.0.13"
+    "vite": "^8.0.13",
+    "typescript": "^5"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "vite": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
   },
   "dependencies": {
     "@swcrypts/core": "^0.0.3"
